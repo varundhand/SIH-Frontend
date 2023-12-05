@@ -29,10 +29,9 @@ const GlobalLoader = () => {
 
   axiosInstance.interceptors.request.use(
     (config) => {
-      if (config.url?.startsWith("/api")) {
-        increaseLoadingCount();
-        setIsLoading(true);
-      }
+      increaseLoadingCount();
+      setIsLoading(true);
+
       return config;
     },
     (error) => {

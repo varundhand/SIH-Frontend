@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { usePathname, useRouter } from "next/navigation";
 import { AppDispatch } from "../../redux/store";
 import { User, revalidateToken } from "../../services/auth.services";
-import { clearUser, setUser } from "../../redux/features/userSlice";
+import { clearUser, getUser, setUser } from "../../redux/features/userSlice";
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -14,17 +14,16 @@ interface AuthGuardProps {
 
 function AuthGuard({ children }: AuthGuardProps) {
   const router = useRouter();
+  const user = useSelector(getUser);
   const dispatch = useDispatch<AppDispatch>(); // Use the AppDispatch type for dispatch
 
   const pathname = usePathname();
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken") as string;
-
-    console.log("Effect ran", token);
+    const isAuthRoute = pathname.startsWith("/auth");
 
     const revalidation = async (token: string) => {
-      console.log("Revalidation done");
       try {
         const response = await revalidateToken(token);
         const user: User = response.user;
@@ -39,8 +38,10 @@ function AuthGuard({ children }: AuthGuardProps) {
             isAdmin: true,
           })
         );
+        router.push(pathname);
       } catch (error) {
         dispatch(clearUser());
+
         throw error;
         // Handle errors if needed
       }
@@ -56,13 +57,15 @@ function AuthGuard({ children }: AuthGuardProps) {
       }
     };
 
-    if (token) {
+    if (token && !isAuthRoute && !user?.email) {
       revalidate();
-    } else {
-      dispatch(clearUser());
-      if (!pathname.startsWith("/auth")) router.push("/auth/signin");
     }
-  }, [dispatch, pathname, router]);
+
+    if (!token) {
+      dispatch(clearUser());
+      router.push("/auth/signin");
+    }
+  }, [dispatch, pathname, router, user?.email]);
 
   return <>{children}</>;
 }

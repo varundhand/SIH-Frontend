@@ -189,7 +189,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 pathname === "/" && "text-white"
                               } `}
                             >
-                              eCommerce
+                              Stats
                             </Link>
                           </li>
                         </ul>

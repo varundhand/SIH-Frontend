@@ -1,16 +1,16 @@
-import ECommerce from "@/components/Dashboard/E-commerce";
+import Stats from "@/components/Dashboard/Stats";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "TailAdmin | Next.js E-commerce Dashboard Template",
-  description: "This is Home Blog page for TailAdmin Next.js",
+  title: "Secure Compose | Revolutionizing Software Security",
+  description: "Automate SBOM generation, identify versions precisely, and detect anomalies with SecureCompose. Elevate your cybersecurity with real-time updates and a user-friendly interface. Stay compliant, secure your software supply chain effortlessly. ",
   // other metadata
 };
 
 export default function Home() {
   return (
     <>
-      <ECommerce />
+      <Stats />
     </>
   );
 }

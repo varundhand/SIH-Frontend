@@ -13,7 +13,7 @@ import dynamic from "next/dynamic";
 //   ssr: false,
 // });
 
-const ECommerce: React.FC = () => {
+const Stats: React.FC = () => {
   return (
     <>
 
@@ -117,4 +117,4 @@ const ECommerce: React.FC = () => {
   );
 };
 
-export default ECommerce;
+export default Stats;

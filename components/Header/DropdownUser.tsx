@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,11 +38,10 @@ const DropdownUser = () => {
 
   return (
     <div className="relative">
-      <Link
+      <button
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}
         className="flex items-center gap-4"
-        href="#"
       >
         <span className="hidden text-right lg:block">
           <span className="block text-sm font-medium text-black dark:text-white">
@@ -73,7 +74,7 @@ const DropdownUser = () => {
             fill=""
           />
         </svg>
-      </Link>
+      </button>
 
       {/* <!-- Dropdown Start --> */}
       <div

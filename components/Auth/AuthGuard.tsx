@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
 import { usePathname, useRouter } from "next/navigation";
 import { AppDispatch } from "../../redux/store";

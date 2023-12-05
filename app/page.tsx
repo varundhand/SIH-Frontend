@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Stats from "../components/Dashboard/Stats";
 import { useSelector } from "react-redux";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Secure Compose | Revolutionizing Software Security",

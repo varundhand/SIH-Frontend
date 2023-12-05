@@ -3,7 +3,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SidebarLinkGroup from "./SidebarLinkGroup";
 import Image from "next/image";
-import logo from "../../public/images/logo/Secure Compose-logos_white.png";
 import { useSelector } from "react-redux";
 import { getLoggedIn } from "../../redux/features/userSlice";
 
@@ -72,7 +71,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           {/* <!-- SIDEBAR HEADER --> */}
           <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
             <a href="/">
-              <Image width={176} height={32} src={logo} alt="Logo" />
+              <Image width={176} height={32} src='public/images/logo/logo.png' alt="Logo" />
             </a>
 
             <button

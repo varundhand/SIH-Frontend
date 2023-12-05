@@ -57,7 +57,7 @@ function AuthGuard({ children }: AuthGuardProps) {
       }
     };
 
-    if (token && !isAuthRoute && !user?.email) {
+    if (token && !user?.email) {
       revalidate();
     }
 

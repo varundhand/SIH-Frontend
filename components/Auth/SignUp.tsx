@@ -1,7 +1,7 @@
 import Breadcrumb from "@/Breadcrumbs/Breadcrumb";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useReducer } from "react";
 
 const SignUp = () => {
   return (

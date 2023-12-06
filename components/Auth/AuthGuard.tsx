@@ -53,7 +53,8 @@ function AuthGuard({ children }: AuthGuardProps) {
         console.log(response);
         if (pathname.startsWith("/auth")) router.push("/");
       } catch (error) {
-        router.push("/auth/signin");
+        if (pathname.startsWith("/auth")) router.push(pathname);
+        else router.push("/auth/signin");
       }
     };
 
